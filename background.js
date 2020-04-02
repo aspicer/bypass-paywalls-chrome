@@ -182,8 +182,25 @@ const blockedRegexes = {
 const userAgentDesktop = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 const userAgentMobile = "Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible ; Googlebot/2.1 ; +http://www.google.com/bot.html)"
 
-var enabledSites = [];
+var enabledSites = Object.keys(defaultSites).map(function(key) {
+  return defaultSites[key];
+});
 
+/*
+for (var key in defaultSites) {
+  if (!defaultSites.hasOwnProperty(key)) {
+    continue;
+  }
+
+  var value = defaultSites[key];
+  var labelEl = document.createElement('label');
+  var inputEl = document.createElement('input');
+  inputEl.type = 'checkbox';
+  inputEl.dataset.key = key;
+  inputEl.dataset.value = value;
+*/
+
+/*
 // Get the enabled sites
 extension_api.storage.sync.get({
   sites: {}
@@ -219,6 +236,7 @@ extension_api.runtime.onInstalled.addListener(function (details) {
     // User updated extension
   }
 });
+*/
 
 extension_api.tabs.onUpdated.addListener(updateBadge);
 extension_api.tabs.onActivated.addListener(updateBadge);

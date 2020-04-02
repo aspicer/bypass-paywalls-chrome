@@ -1,4 +1,5 @@
 var arr_localstorage_hold = ['sfchronicle.com', 'cen.acs.org'];
+
 var localstorage_hold = arr_localstorage_hold.some(function(url) {
     return window.location.href.indexOf(url) !== -1;
 });
